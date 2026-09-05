@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>은하 작곡가 (Galaxy Composer)</title>
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="starfield"></canvas>
+
+    <header>
+        <h1>Galaxy Composer</h1>
+        <p>나만의 은하수 멜로디를 코딩 없이 그려보세요.</p>
+    </header>
+
+    <main>
+        <div class="controls">
+            <button id="playBtn" onclick="togglePlay()">▶ 재생 (Play)</button>
+            <button onclick="clearGrid()">초기화 (Clear)</button>
+            <button id="recBtn" onclick="toggleRecording()">● 녹음 시작 (Record)</button>
+            <button id="downloadBtn" onclick="stopAndDownload()" style="display:none;">↓ 다운로드 (Download)</button>
+        </div>
+
+        <div class="grid-container">
+            <div class="grid" id="sequencer-grid"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <a onclick="openModal('termsModal')">이용약관</a> | 
+            <a onclick="openModal('privacyModal')">개인정보처리방침</a>
+        </div>
+        <div class="copyright">
+            © 2026 Galaxy Composer. All rights reserved.<br>
+            ※ 본 사이트에서 생성된 음악은 Web Audio API를 통해 실시간 합성된 순수 창작물로, 저작권 문제 없이 상업적/비상업적으로 자유롭게 사용 가능합니다.
+        </div>
+    </footer>
+
+    <!-- 이용약관 모달 -->
+    <div class="modal-overlay" id="overlay" onclick="closeModals()"></div>
+    
+    <div class="modal" id="termsModal">
+        <div class="modal-header">
+            <h2>이용약관</h2>
+            <button class="close-btn" onclick="closeModals()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h3>제 1 조 (목적)</h3>
+            <p>본 약관은 'Galaxy Composer'(이하 "서비스")가 제공하는 웹 기반 작곡 서비스의 이용 조건 및 권리를 규정함을 목적으로 합니다.</p>
+            <h3>제 2 조 (저작권 및 사용 권한)</h3>
+            <p>1. 본 서비스를 통해 사용자가 생성(작곡)한 모든 음원(오디오 파일)의 저작권은 전적으로 음원을 생성한 사용자에게 귀속됩니다.<br>
+               2. 사용자는 다운로드한 음원을 로열티 프리(Royalty-Free)로 유튜브, 게임 배경음악, 팟캐스트 등 상업적 및 비상업적 목적에 자유롭게 활용할 수 있습니다.<br>
+               3. 서비스에서 제공하는 오디오 엔진(Web Audio API) 및 인터페이스 디자인의 저작권은 서비스 제공자에게 있습니다.</p>
+            <h3>제 3 조 (서비스의 제공 및 한계)</h3>
+            <p>본 서비스는 사용자의 웹 브라우저 환경에 의존하는 "있는 그대로(As-is)"의 상태로 제공되며, 기기나 브라우저 버전에 따른 오작동이나 데이터 손실에 대해 서비스 제공자는 법적 책임을 지지 않습니다.</p>
+        </div>
+    </div>
+
+    <!-- 개인정보처리방침 모달 -->
+    <div class="modal" id="privacyModal">
+        <div class="modal-header">
+            <h2>개인정보처리방침</h2>
+            <button class="close-btn" onclick="closeModals()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h3>1. 수집하는 개인정보 항목</h3>
+            <p>Galaxy Composer는 회원가입 절차가 없으며, 사용자의 이름, 이메일, IP 주소 등 어떠한 개인정보도 수집, 저장, 전송하지 않습니다.</p>
+            <h3>2. 데이터의 처리 및 보관</h3>
+            <p>사용자가 그리드에 입력한 작곡 패턴과 녹음된 오디오 데이터는 전적으로 사용자의 웹 브라우저(Local/Client-side) 내에서만 처리됩니다. 당사의 서버로 어떠한 작곡 데이터도 전송되지 않습니다.</p>
+            <h3>3. 쿠키(Cookie) 및 로컬 스토리지 사용</h3>
+            <p>현재 본 서비스는 사용자 식별을 위한 쿠키를 사용하지 않으며, 향후 사용자 편의(다크모드 설정 유지 등)를 위해 브라우저의 로컬 스토리지를 사용할 수 있으나 이는 개인을 식별하는 용도로 사용되지 않습니다.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript 파일 연결 -->
+    <script src="script.js"></script>
+</body>
+</html>
+
