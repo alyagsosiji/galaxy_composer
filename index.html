@@ -2,9 +2,8 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>은하 작곡가 (Galaxy Composer)</title>
-    <!-- CSS 파일 연결 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,8 +22,11 @@
             <button id="downloadBtn" onclick="stopAndDownload()" style="display:none;">↓ 다운로드 (Download)</button>
         </div>
 
-        <div class="grid-container">
-            <div class="grid" id="sequencer-grid"></div>
+        <div class="grid-wrapper">
+            <div class="grid-container">
+                <div class="grid" id="sequencer-grid"></div>
+            </div>
+            <div class="scroll-hint">← 스크롤하여 더 보기 →</div>
         </div>
     </main>
 
@@ -39,7 +41,7 @@
         </div>
     </footer>
 
-    <!-- 이용약관 모달 -->
+    <!-- 모달(이용약관, 개인정보처리방침)은 기존과 동일 -->
     <div class="modal-overlay" id="overlay" onclick="closeModals()"></div>
     
     <div class="modal" id="termsModal">
@@ -59,7 +61,6 @@
         </div>
     </div>
 
-    <!-- 개인정보처리방침 모달 -->
     <div class="modal" id="privacyModal">
         <div class="modal-header">
             <h2>개인정보처리방침</h2>
@@ -75,8 +76,6 @@
         </div>
     </div>
 
-    <!-- JavaScript 파일 연결 -->
     <script src="script.js"></script>
 </body>
 </html>
-
